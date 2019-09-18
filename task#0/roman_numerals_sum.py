@@ -19,18 +19,22 @@ def roman_to_int_conv(num1: str) -> int:
 
         integers = [stand[symb] for symb in num1] #retrieves all integers from input string according to the standard
 
+
+        if len(integers) == 1: # if case of single roman numerals(e.g. 'I', 'V','X', 'C' etc)
+            return integers[0] # it directly returns them
+
+        temp_list = []
         try:
-            temp_list = []
-
             for item in integers:
-
                 ind = integers.index(item)
 
                 if item < integers[ind+1]:
                     item = integers[ind+1] - item
                     temp_list.append(item)
+
                 elif item == integers[ind+1]:
                     temp_list.append(item)
+
                 else:
                     if item not in temp_list:
                         temp_list.append(item)
@@ -39,9 +43,8 @@ def roman_to_int_conv(num1: str) -> int:
     else:
         raise ValueError('Invalid roman numeral')
 
-    result = sum(temp_list)
+    return sum(temp_list)
 
-    return result
 #Uncomment following to test the converter
 #x = roman_to_int_conv('MCMXL')
 #print(x)
@@ -60,5 +63,5 @@ def roman_numerals_sum(num1: str, num2: str) -> int:
         raise TypeError('Both arguments should be in the string format')
 
 #Uncomment following to test the summator:
-#roman_sum = roman_numerals_sum('MCMLXXX', 'MCMXL')
-#print(roman_sum)
+roman_sum = roman_numerals_sum('X', 'M')
+print(roman_sum)
