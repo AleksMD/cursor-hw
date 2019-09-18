@@ -63,5 +63,5 @@ def roman_numerals_sum(num1: str, num2: str) -> int:
         raise TypeError('Both arguments should be in the string format')
 
 #Uncomment following to test the summator:
-roman_sum = roman_numerals_sum('X', 'M')
-print(roman_sum)
+#roman_sum = roman_numerals_sum('X', 'M')
+#print(roman_sum)
