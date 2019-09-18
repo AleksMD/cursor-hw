@@ -1,2 +1,2 @@
 # cursor-hw
-Homeworks
+Homeworks in the Python course "Cursor Education".
