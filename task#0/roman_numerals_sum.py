@@ -85,7 +85,13 @@ def roman_numerals_sum(num1: str, num2: str, roman_view=True) -> int:
     else:
         raise TypeError('Both arguments should be in the string format')
 
+<<<<<<< HEAD
 if __name__ == '__main__':
     assert roman_numerals_sum('M', 'X') == 'MX'
     assert roman_numerals_sum('V', 'V') == 'X'
     
+=======
+#Uncomment following to test the summator:
+#roman_sum = roman_numerals_sum('X', 'M')
+#print(roman_sum)
+>>>>>>> 82c10ba7a4abf80233807db687d14c0ff2b0c1c5
