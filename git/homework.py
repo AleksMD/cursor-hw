@@ -109,7 +109,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    return word in text
+    return word in text.split()
 
 
 def some_loop_exercise() -> list:
