@@ -1,4 +1,8 @@
 from typing import List
+import psycopg2
+from config import DATABASE
+connec = psycopg2.connect(**DATABASE)
+cursor = connec.cursor()
 
 
 def task_1_add_new_record_to_db(con) -> None:
@@ -19,7 +23,10 @@ def task_1_add_new_record_to_db(con) -> None:
     Returns: 92 records
 
     """
-    pass
+    with con.cursor() as cursor:
+        cursor.execute('''INSERT INTO customers(customer_name, contactname, 
+                    address, city, postalcode, country) 
+                    VALUES('Thomas', 'David', 'Some Address', 'London', '774', 'Singapore');''')
 
 
 def task_2_list_all_customers(cur) -> list:
@@ -32,8 +39,10 @@ def task_2_list_all_customers(cur) -> list:
     Returns: 91 records
 
     """
-    pass
 
+    result = cur.fetchall('''SELECT * FROM Customers;''')
+
+    return list(result)
 
 def task_3_list_customers_in_germany(cur) -> list:
     """
@@ -44,8 +53,8 @@ def task_3_list_customers_in_germany(cur) -> list:
 
     Returns: 11 records
     """
-    pass
-
+    result = cur.fetchall('''SELECT * FROM customers WHERE country="Germany";''')
+    return result
 
 def task_4_update_customer(con):
     """
@@ -56,7 +65,7 @@ def task_4_update_customer(con):
     Returns: 91 records with updated customer
 
     """
-    pass
+    cursor.execute('''UPDATE customers set customername''')
 
 
 def task_5_delete_the_last_customer(con) -> None:
