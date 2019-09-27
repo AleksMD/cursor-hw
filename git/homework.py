@@ -15,7 +15,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
+    if first is second:
         return True
     else:
         return False
@@ -109,7 +109,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    return word in text.split()
+    return word in text
 
 
 def some_loop_exercise() -> list:
