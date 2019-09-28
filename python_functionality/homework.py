@@ -1,4 +1,5 @@
 from typing import List, Dict, Union, Generator
+import math
 
 # We will work with such dicts
 ST = Dict[str, Union[str, int]]
@@ -14,7 +15,12 @@ def task_1_fix_names_start_letter(data: DT) -> DT:
         fix_names_start_letters([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}])
         >>> [{'name': 'Alex', 'age': 26}, {'name': 'Denys', 'age': 89}]
     """
-    pass
+
+    for dict_instance in data:
+        if dict_instance.get('name', None):
+            dict_instance['name'] = dict_instance['name'].capitalize()
+
+    return data
 
 
 def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
@@ -25,8 +31,14 @@ def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
        remove_dict_field([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 'age')
         >>> [{'name': 'Alex'}, {'name': 'denys'}]
     """
-    pass
 
+
+    for dict_instance in data:
+        for key in redundant_keys:
+            if dict_instance.get(key, None):
+                del dict_instance[key]
+
+    return data
 
 def task_3_find_item_via_value(data: DT, value) -> DT:
     """
@@ -35,21 +47,27 @@ def task_3_find_item_via_value(data: DT, value) -> DT:
         find_item_via_value([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 26)
         >>> [{'name': 'Alex', 'age': 26}]
     """
-    pass
+
+    return [dict_instance for dict_instance in data
+                    if value in dict_instance.values()]
+
 
 
 def task_4_min_value_integers(data: List[int]) -> int:
     """
     Find and return minimum value from list
     """
-    pass
+    return min(data) if data else None
 
 
 def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     """
     Find the longest string
     """
-    pass
+
+    if data:
+        result = sorted([(len(str(item)), item) for item in data], key=lambda x: x[0])
+        return str(result[0][1])
 
 
 def task_6_min_value_list_of_dicts(data: DT, key: str) -> ST:
@@ -58,21 +76,25 @@ def task_6_min_value_list_of_dicts(data: DT, key: str) -> ST:
     Returns:
 
     """
-    pass
+
+    return sorted([d for d in data if d.get(key, None)], key=lambda x: x[key])[0]
+
 
 
 def task_7_max_value_list_of_lists(data: List[List[int]]) -> int:
     """
     Find max value from list of lists
     """
-    pass
+    if data:
+        return max([max(item) for item in data if item])
 
 
 def task_8_sum_of_ints(data: List[int]) -> int:
     """
     Find sum of all items in given list
     """
-    pass
+
+    return sum(data) if data else 0
 
 
 def task_9_sum_characters_positions(text: str) -> int:
@@ -88,7 +110,7 @@ def task_9_sum_characters_positions(text: str) -> int:
         >>> 532
 
     """
-    pass
+    return sum([ord(char) for char in text]) if text else 0
 
 
 def task_10_generator_of_simple_numbers() -> Generator[int, None, None]:
@@ -102,4 +124,10 @@ def task_10_generator_of_simple_numbers() -> Generator[int, None, None]:
         next(a)
         >>> 3
     """
-    pass
+    for val in range(2, 201):
+        if val > 1:
+            for n in range(2, val):
+                if (val % n) == 0:
+                    break
+            else:
+                yield val
