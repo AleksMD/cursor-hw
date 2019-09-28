@@ -6,6 +6,7 @@ from typing import Any
 from typing import List
 from string import ascii_lowercase
 
+
 class OurAwesomeException(Exception):
     pass
 
@@ -15,10 +16,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
-        return True
-    else:
-        return False
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -34,10 +32,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if first is second:
-        return True
-    else:
-        return False
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -133,8 +128,9 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
 
 def alphabet() -> dict:
     """
-    Create dict which keys is alphabetic characters. And values their number in alphabet
-    Notes You could see an implementaion of this one in test, but create another one
+    Create dict which keys is alphabetic characters. And values their number in
+    alphabet Notes You could see an implementaion of this one in test,
+    but create another one
     Examples:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
@@ -142,7 +138,7 @@ def alphabet() -> dict:
     return dict(zip(range(1, len(ascii_lowercase) + 1), ascii_lowercase))
 
 
-def simple_sort(data: List[int]) -> List[list]:
+def simple_sort(data: List[int]) -> List[int]:
     """
     Sort list of ints without using built-in methods.
     Examples:
@@ -158,5 +154,3 @@ def simple_sort(data: List[int]) -> List[list]:
                 start_ind = ind2
         data[ind], data[start_ind] = data[start_ind], data[ind]
     return data
-
-
