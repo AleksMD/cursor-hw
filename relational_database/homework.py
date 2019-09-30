@@ -26,6 +26,7 @@ def task_1_add_new_record_to_db(con) -> None:
     cursor.execute('''INSERT INTO customers(customername, contactname, 
                     address, city, postalcode, country) 
                     VALUES('Thomas', 'David', 'Some Address', 'London', '774', 'Singapore');''')
+    cursor.commit()
     cursor.close()
 
 
